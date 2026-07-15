@@ -112,6 +112,8 @@ Part 3: Reciprocal Square Root
 
 
 Challenges/Conclusion
+
+
 In this lab, the hardest part was conceptually understanding the math behind the Newton-Raphson method and also understanding bfloat16 and Q16.16 numbers. This lab successfully demonstrated the implementation of an FPGA-based hardware accelerator to compute operations using the iterative Newton-Raphson method. By partitioning the floating-point components, utilizing a quantized Q16.16 fixed-point datapath, and leveraging seed lookup tables, the multi-cycle FSM design converged rapidly within a minimal cycle count. 
 
 
