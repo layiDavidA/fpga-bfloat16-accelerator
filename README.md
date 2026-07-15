@@ -92,12 +92,26 @@ Before optimization, the design used 1304 total logic elements, 46 9-bit Multipl
 
 
 Operation
+
+
 Latency (Cycles)
+
+
 Part 1: Reciprocal
+
+
 10 cycles
+
+
 Part 2: Square Root
+
+
 12 cycles
+
+
 Part 3: Reciprocal Square Root
+
+
 12 cycles
 
 
