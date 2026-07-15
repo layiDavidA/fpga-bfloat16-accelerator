@@ -1,4 +1,4 @@
-<img width="512" height="404" alt="unnamed (3)" src="https://github.com/user-attachments/assets/456ed06a-be26-49f5-8004-78a2e971f531" />FPGA-based Acceleration of Non-Linear Functions Using Newton-Raphson Method
+FPGA-based Acceleration of Non-Linear Functions Using Newton-Raphson Method
 
 Overview
 The goal of this lab was to design and implement a sequential hardware unit that computes the reciprocal [1/(x)] and the square root [sqrt(x)] of a positive normalized bfloat16 floating-point number using the Newton–Raphson method. The design works by taking a 16-bit bfloat16 number and breaking that into a sign bit, 8-bit biased exponent, and 7-bit fraction fields. The design then uses a seed approximation via ROM, and uses the 5 MSB of the mantissa to index a 32-entry lookup table to fetch an optimized initial numerical guess for the Newton–Raphson method. Next, depending on reciprocal or sqrt, the circuit does two sequential mathematical iterations in Q16.16 format and converges to a true mathematical solution. After the iterations, the exponents are adjusted and shifted depending on whether a reciprocal or a square root was requested. After the mantissa values are finalized and normalization is handled, we convert the final fixed-point results back into 16-bit standard format.
@@ -30,6 +30,9 @@ The next step of this design was to implement it on the FPGA board. Using the co
 The values 1, 1.5, 0.5, 4, and 2 were tested on the physical board and verified using previous testbench values for correct functionality. The design was verified and had correct functionality for both sqrt and reciprocal.
 
 [Physical Board Sqrt and reciprocal of 0.5]
+
+
+
 <img width="512" height="401" alt="unnamed (2)" src="https://github.com/user-attachments/assets/038708a7-9cdb-4bab-a4cb-50274fc34544" />
 
 <img width="512" height="404" alt="unnamed (3)" src="https://github.com/user-attachments/assets/c67d9590-b5db-4404-b099-de6789cfbe1f" />
@@ -56,9 +59,13 @@ The values 1, 1.5, 0.5, 4, and 2 were tested on the physical board and verified 
 <img width="512" height="403" alt="unnamed (5)" src="https://github.com/user-attachments/assets/b802031c-62db-4647-83b8-3f9a8ec855ea" />
 
 
+
+
 Part V: Timing Optimization
 Upon verifying the design on the board, the timing constraints were not met. For 1200mV 85C the design had an Fmax of 25.78 MHz, and for 1200mV 0C the design had an Fmax of 28.25Mhz.  
 <img width="623" height="142" alt="Screenshot 2026-07-14 at 9 30 47 PM" src="https://github.com/user-attachments/assets/7bb15838-f893-4852-9af7-59557178ca1c" />
+
+
 
 
 
@@ -71,6 +78,9 @@ To improve the clock frequency of the design, the critical path was viewed from 
  
 
 Part VI: Resource Utilization
+
+
+
 <img width="347" height="254" alt="Screenshot 2026-07-14 at 9 31 51 PM" src="https://github.com/user-attachments/assets/977de5a2-ee32-425e-b86b-7d604364c06e" />
 <img width="348" height="233" alt="Screenshot 2026-07-14 at 9 32 02 PM" src="https://github.com/user-attachments/assets/ce84c8b8-2b5f-4e1f-bb3c-41349f2190b2" />
 
